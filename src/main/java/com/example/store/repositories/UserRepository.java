@@ -9,4 +9,9 @@ public interface UserRepository extends CrudRepository<User, Long> {
     User findUserByEmail(String email);
     User findByNickName(String nickName);
 
+    @Query("select u.nickName from User u where u.email = ?1")
+    String getNickNameByEmail(String userEmail);
+
+    @Query("select u.id from User u where u.email = ?1")
+    Long getIdByEmail(String userEmail);
 }
