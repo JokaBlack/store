@@ -1,17 +1,16 @@
 package com.example.store;
 
-import com.example.store.repositories.FeedbackRepository;
-import com.example.store.repositories.OrderRepository;
-import com.example.store.repositories.ProductRepository;
-import com.example.store.repositories.UserRepository;
+import com.example.store.repositories.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Configuration
 @RequiredArgsConstructor
@@ -20,9 +19,11 @@ public class Test {
     private final ProductRepository productRepository;
     private final OrderRepository orderRepository;
     private final FeedbackRepository feedbackRepository;
+    private final CartRepository cartRepository;
+
     @Bean
     public void dd(){
-        Pageable pageable = PageRequest.of(1, 2);
+        Pageable pageable = PageRequest.of(1, 1);
         System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++=");
 //        System.out.println(productRepository.selectProductWherePriceLess(new BigDecimal("300")));
 //        System.out.println(productRepository.findAllBy(pageable).getContent());
@@ -36,6 +37,8 @@ public class Test {
 //        System.out.println(feedbackRepository.findByProductId(pageable, 1L));
 //        System.out.println(feedbackRepository.searchContainingFeedback(1L, "e"));
 //        System.out.println(feedbackRepository.selectLastMonthFeedbacks(1L));
+//        System.out.println(cartRepository.searchByProductName("e", "test@mail.ru"));
+        System.out.println(cartRepository.searchWhereAmountMore(3L,"test@mail.ru"));
         System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++=");
 
     }
