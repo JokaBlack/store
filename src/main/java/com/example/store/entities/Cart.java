@@ -3,6 +3,7 @@ package com.example.store.entities;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Positive;
 import java.time.LocalDateTime;
 
 @Data
@@ -13,6 +14,7 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Positive
     @Column()
     private long amount;
 

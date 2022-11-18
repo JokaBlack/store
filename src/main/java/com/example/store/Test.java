@@ -39,7 +39,7 @@ public class Test {
 //        System.out.println(feedbackRepository.selectLastMonthFeedbacks(1L));
 //        System.out.println(cartRepository.searchByProductName("e", "test@mail.ru"));
 //        System.out.println(cartRepository.searchWhereAmountMore(3L,"test@mail.ru"));
-//        System.out.println(userRepository.getIdByEmail("test@mail.ru"));
+//        System.out.println(userRepository.getIdByEma il("test@mail.ru"));
         System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++=");
 
     }
