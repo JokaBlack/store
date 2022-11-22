@@ -19,6 +19,6 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     Page<Product> findAllBy(Pageable pageable);
 
     List<Product> findByNameContaining(String name);
-    List<Product> findByDescriptionContaining(String description);
+    Page<Product> findByNameIgnoreCaseContainsOrDescriptionContains(String description, String Name, Pageable pageable);
 
 }
