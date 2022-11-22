@@ -1,5 +1,5 @@
 let PAGE = 0;
-let SIZE = 1;
+let SIZE = 4;
 const BASE_URl = "http://localhost:8080/";
 
 let TOTAL_PAGES = 0;
@@ -14,7 +14,7 @@ doFocus();
 function createProductElement(product) {
     let newProduct = document.createElement('div');
     const htmlPost =
-        `<div class="card mx-3 my-3" style="max-width: 300px;">
+        `<div class="card mx-3 my-3 col" style="max-width: 300px;">
             <img src="${product.img}" class="card-img-top" alt="image" style="max-height: 250px;>
                 <div class="card-body">
                     <h5 class="card-title">${product.name}</h5>

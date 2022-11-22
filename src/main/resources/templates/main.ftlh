@@ -32,7 +32,7 @@
             </div>
         </nav>
 
-        <div class="d-flex" id="product-box">
+        <div class="d-flex row row-cols-4 row-cols-md-4 row-cols-sm-3" id="product-box">
 
         </div>
         <div>
