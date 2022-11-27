@@ -15,13 +15,12 @@ function createProductElement(product) {
     let newProduct = document.createElement('div');
     const htmlPost =
         `<div class="card mx-3 my-3 col" style="max-width: 300px;">
-            <img src="${product.img}" class="card-img-top" alt="image" style="max-height: 250px;>
+            <img src="${product.img}" class="card-img-top" alt="image" style="height: 250px">
                 <div class="card-body">
                     <h5 class="card-title">${product.name}</h5>
                     <h6>Price: ${product.price}</h6>
                     <a href="#" class="btn btn-primary">More</a>
-                </div>
-        </div>`
+                </div>`
     newProduct.innerHTML = htmlPost;
     return newProduct;
 }

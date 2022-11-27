@@ -17,11 +17,12 @@ create table users
 (
     id        bigserial
         primary key,
-    email     varchar(255) not null,
-    nick_name varchar(255) not null,
-    password  varchar(255) not null
+    email     varchar(255)                                  not null,
+    enabled   boolean     default true                      not null,
+    nick_name varchar(255)                                  not null,
+    password  varchar(255)                                  not null,
+    role      varchar(50) default 'USER'::character varying not null
 );
-
 
 
 create table cart
