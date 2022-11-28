@@ -18,7 +18,7 @@
        <form action="/user/reg" method="post" style="max-width: 300px;">
            <div class="mb-3 mt-5">
                <#if error != "">
-                   <div class="alert alert-error" style="color: red">
+                   <div class="alert alert-danger" >
                        ${error}
                    </div>
                </#if>

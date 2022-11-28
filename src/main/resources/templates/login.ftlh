@@ -17,12 +17,12 @@
        <form action="/login" method="post" style="max-width: 300px;">
            <div class="mb-3 mt-5">
                <#if error == true>
-               <div class="alert alert-error" style="color: red">
+               <div class="alert alert-danger">
                    Invalid username or password.
                </div>
                </#if>
                <#if name != "">
-                   <div class="alert alert-error" style="color: green">
+                   <div class="alert alert-success">
                        Hello ${name}, please sign in!
                    </div>
                </#if>
