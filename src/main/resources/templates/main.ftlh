@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf" content="${_csrf.token}"/>
+    <meta name="csrf_parameter_name" content="${_csrf.parameterName}"/>
     <title>OnlineStore</title>
     <link rel="icon" href="/images/cart-icon-10.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,10 +32,15 @@
                 <a href="http://localhost:8080/login" style="text-decoration: none">
                     <i class="bi bi-person text-light fs-4 me-3"></i>
                 </a>
-                <i class="bi bi-cart3 text-light fs-4 me-3"></i>
+
+                <a href="http://localhost:8080/cart" style="text-decoration: none">
+                    <i class="bi bi-cart3 text-light fs-4 me-3"></i>
+                </a>
+
                 <form action="/logout" method="post">
                     <#if _csrf??>
-                        <input type="hidden" name="${(_csrf.parameterName)!'csrf-param-name'}" value="${(_csrf.token)!'csrf-token'}">
+                        <input type="hidden" name="${(_csrf.parameterName)!'csrf-param-name'}"
+                               value="${(_csrf.token)!'csrf-token'}">
                     </#if>
 
                     <button type="submit" class="bg-transparent border-0">
@@ -47,8 +54,13 @@
 
     <div class="d-flex row row-cols-4 row-cols-md-4 row-cols-sm-3" id="product-box">
 
+
+
+
+
     </div>
-    <div>
+
+            <div>
         <button onclick="prev()" id="prev-btn">prev</button>
         <button onclick="next()" id="next-btn">next</button>
     </div>

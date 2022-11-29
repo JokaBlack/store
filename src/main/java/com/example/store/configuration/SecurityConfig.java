@@ -40,9 +40,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        http.authorizeRequests()
+        http.authorizeRequests()
 //                .antMatchers("/").fullyAuthenticated();
-//                .antMatchers("/like/**").fullyAuthenticated()
+                .antMatchers("/cart/**").fullyAuthenticated();
 //                .antMatchers("/publications/add").fullyAuthenticated()
 //                .antMatchers("/publications/delete").fullyAuthenticated()
 //                .antMatchers("/subscribe/add").fullyAuthenticated();

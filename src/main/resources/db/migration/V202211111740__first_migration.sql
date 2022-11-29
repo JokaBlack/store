@@ -27,16 +27,24 @@ create table users
 
 create table cart
 (
-    id         bigserial
+    id        bigserial
         primary key,
-    amount     bigint,
-    date_time  timestamp not null,
-    product_id bigint
-        constraint fkpu4bcbluhsxagirmbdn7dilm5
-            references products,
-    user_id    bigint
+    date_time timestamp not null,
+    user_id   bigint
         constraint fkg5uhi8vpsuy0lgloxk2h4w5o6
             references users
+);
+
+create table cart_products
+(
+    cart_id     bigint not null
+        constraint fknlhjc091rdu9k5c8u9xwp280w
+            references cart,
+    products_id bigint not null
+        constraint uk_3kg5kx19f8oy0lo76hdhc1uw1
+            unique
+        constraint fk7xg877l1r2f279hmlcowu1cth
+            references products
 );
 
 

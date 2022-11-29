@@ -21,4 +21,5 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     List<Product> findByNameContaining(String name);
     Page<Product> findByNameIgnoreCaseContainsOrDescriptionContains(String description, String Name, Pageable pageable);
 
+
 }

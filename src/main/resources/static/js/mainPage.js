@@ -15,16 +15,31 @@ function createProductElement(product) {
     let newProduct = document.createElement('div');
     const htmlPost =
         `<div class="card mx-3 my-3 col" style="max-width: 300px;">
+    <form action="/cart/add" method="post">
+
             <img src="${product.img}" class="card-img-top" alt="image" style="height: 250px">
                 <div class="card-body">
                     <h5 class="card-title">${product.name}</h5>
                     <h6>Price: ${product.price}</h6>
-                    <a href="#" class="btn btn-primary">More</a>
+                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-primary">More</a>
+                    <button class="btn btn-secondary" type="submit">
+                        <i class="bi bi-cart-plus-fill fs-4"></i>
+                    </button>
+                    
+                    <input name="productId" type="hidden" value="${product.id}">
+                    <input name="${paramName}" type="hidden" value="${token}">
+                    
+            </form>
+
                 </div>`
     newProduct.innerHTML = htmlPost;
     return newProduct;
-}
 
+}
+let token = document.getElementsByName("csrf")[0].content;
+let paramName = document.getElementsByName("csrf_parameter_name")[0].content;
+console.log(token)
+console.log(paramName)
 function addProduct(productElement) {
     document.getElementById("product-box").prepend(productElement);
 }
@@ -55,9 +70,9 @@ function next() {
     if (CURRENT_PAGE != (TOTAL_PAGES - 1)) {
         productBoxCleaner();
         PAGE = PAGE + 1;
-        if(SEARCH_PRESSED === false){
+        if (SEARCH_PRESSED === false) {
             sendProductRequest();
-        }else {
+        } else {
             sendProductSearchRequest();
         }
     } else {
@@ -69,9 +84,9 @@ function prev() {
     if (CURRENT_PAGE != 0) {
         productBoxCleaner();
         PAGE = PAGE - 1;
-        if(SEARCH_PRESSED === false){
+        if (SEARCH_PRESSED === false) {
             sendProductRequest();
-        }else {
+        } else {
             sendProductSearchRequest()
         }
     } else {
@@ -157,7 +172,7 @@ function doFocus() {
     input.focus();
 }
 
-function onlineStoreBtn(){
+function onlineStoreBtn() {
     productBoxCleaner();
     PAGE = 0;
     SEARCH_PRESSED = false;
