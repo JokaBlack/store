@@ -29,7 +29,7 @@
                 </div>
             </form>
             <div class="text-end d-flex">
-                <a href="http://localhost:8080/login" style="text-decoration: none">
+                <a href="http://localhost:8080/user/orders" style="text-decoration: none">
                     <i class="bi bi-person text-light fs-4 me-3"></i>
                 </a>
 
@@ -52,7 +52,7 @@
         </div>
     </nav>
 
-    <div class="d-flex row row-cols-4 row-cols-md-4 row-cols-sm-3" id="product-box">
+    <div class="d-flex align-items-stretch row-cols-lg-4 row row-cols-1 row-cols-md-3 row-cols-sm-2" id="product-box">
 
 
 
@@ -64,6 +64,8 @@
         <button onclick="prev()" id="prev-btn">prev</button>
         <button onclick="next()" id="next-btn">next</button>
     </div>
+
+
 
 </div>
 

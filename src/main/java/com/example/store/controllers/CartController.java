@@ -1,6 +1,5 @@
 package com.example.store.controllers;
 
-import com.example.store.dto.CartDto;
 import com.example.store.entities.Cart;
 import com.example.store.services.CartService;
 import lombok.AllArgsConstructor;
@@ -49,11 +48,34 @@ public class CartController {
         Long prodId = Long.parseLong(productId);
         Cart cart = (Cart)servlet.getSession().getAttribute("cart");
         for (var e:cart.getProducts()) {
-            if(e.getId() == prodId){
+            if(e.getProduct().getId() == prodId){
                 cart.getProducts().remove(e);
+                break;
             }
         }
         servlet.getSession().setAttribute("cart", cart);
+        return "redirect:/cart";
+    }
+
+    @PostMapping("/cart/minus")
+    public String minusProductAmount(HttpServletRequest servlet,String productId){
+        Long prodId = Long.parseLong(productId);
+        Cart cart = (Cart)servlet.getSession().getAttribute("cart");
+
+        Cart changedAmountCart = service.minusProductAmount(cart,prodId);
+        servlet.getSession().setAttribute("cart", changedAmountCart);
+
+        return "redirect:/cart";
+    }
+
+    @PostMapping("/cart/plus")
+    public String plusProductAmount(HttpServletRequest servlet,String productId){
+        Long prodId = Long.parseLong(productId);
+        Cart cart = (Cart)servlet.getSession().getAttribute("cart");
+
+        Cart changedAmountCart = service.plusProductAmount(cart,prodId);
+        servlet.getSession().setAttribute("cart", changedAmountCart);
+
         return "redirect:/cart";
     }
 }

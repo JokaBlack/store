@@ -1,13 +1,17 @@
 package com.example.store.entities;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Positive;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "orders")
 public class Order {
     @Id
@@ -26,5 +30,9 @@ public class Order {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Product product;
+
+    @Positive
+    @Column(nullable = false)
+    private BigDecimal totalSum;
 
 }

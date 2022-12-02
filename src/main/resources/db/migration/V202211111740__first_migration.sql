@@ -1,16 +1,16 @@
 
-
 create table products
 (
     id          bigserial
         primary key,
-    amount      bigint         not null,
+    amount      bigint         not null
+        constraint products_amount_check
+            check (amount >= 1),
     description varchar(255),
     img         varchar(255)   not null,
     name        varchar(255)   not null,
     price       numeric(19, 2) not null
 );
-
 
 
 create table users
@@ -35,15 +35,17 @@ create table cart
             references users
 );
 
-create table cart_products
+
+create table cart_products_intermediate
 (
-    cart_id     bigint not null
-        constraint fknlhjc091rdu9k5c8u9xwp280w
+    id             bigserial
+        primary key,
+    product_amount bigint not null,
+    cart_id        bigint
+        constraint fkqhb9gsynwxn1590lvchpxlrt9
             references cart,
-    products_id bigint not null
-        constraint uk_3kg5kx19f8oy0lo76hdhc1uw1
-            unique
-        constraint fk7xg877l1r2f279hmlcowu1cth
+    product_id     bigint
+        constraint fkb4gdf19ci1a9utsix66sfjcxp
             references products
 );
 
@@ -64,13 +66,13 @@ create table feedbacks
 );
 
 
-
 create table orders
 (
     id         bigserial
         primary key,
     amount     bigint,
-    date_time  timestamp not null,
+    date_time  timestamp      not null,
+    total_sum  numeric(19, 2) not null,
     product_id bigint
         constraint fkkp5k52qtiygd8jkag4hayd0qg
             references products,
@@ -78,5 +80,4 @@ create table orders
         constraint fk32ql8ubntj5uh44ph9659tiih
             references users
 );
-
 

@@ -17,21 +17,46 @@
         <nav class="navbar navbar-dark bg-dark bg-gradient">
             <div class="container-fluid">
                 <a href="/" class="navbar-brand bg-transparent border-0">OnlineStore</a>
-                
+
             </div>
         </nav>
 
-        <div class="d-flex row row-cols-4 row-cols-md-4 row-cols-sm-3" id="cart-product-box">
+        <div class="d-flex row row-cols-lg-4 row row-cols-1 row-cols-md-3 row-cols-sm-2" id="cart-product-box">
             <#list cart.products as product>
                 <div class="card mx-3 my-3 col" style="max-width: 300px;">
-                        <img src="${product.img}">
-                        <p>${product.name}</p>
+                        <img src="${product.product.img}">
+
+                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                            <form action="/cart/minus" method="post">
+                            <button class="btn btn-outline-primary"><i class="bi bi-arrow-left-square"></i></button>
+                                <input name="productId" type="hidden" value="${product.product.id}">
+                                <#if _csrf??>
+                                    <input type="hidden" name="${(_csrf.parameterName)!'csrf-param-name'}" value="${(_csrf.token)!'csrf-token'}">
+                                </#if>
+                            </form>
+                            <p class="px-3">${product.productAmount}</p>
+                            <form action="/cart/plus" method="post">
+                            <button class="btn btn-outline-primary"><i class="bi bi-arrow-right-square"></i></button>
+                                <input name="productId" type="hidden" value="${product.product.id}">
+                                <#if _csrf??>
+                                    <input type="hidden" name="${(_csrf.parameterName)!'csrf-param-name'}" value="${(_csrf.token)!'csrf-token'}">
+                                </#if>
+                            </form>
+                        </div>
                     <form action="/cart/delete" method="post" class="mt-auto">
-                        <input name="productId" type="hidden" value="${product.id}">
+                        <input name="productId" type="hidden" value="${product.product.id}">
                         <#if _csrf??>
                             <input type="hidden" name="${(_csrf.parameterName)!'csrf-param-name'}" value="${(_csrf.token)!'csrf-token'}">
                         </#if>
                         <button type="submit" class="vote flex align-center ">Delete</button>
+                    </form>
+                    <form action="/user/orders/add" method="post">
+                        <input type="hidden" name="productId" value="${product.product.id}">
+                        <input type="hidden" name="amount" value="${product.productAmount}">
+                        <#if _csrf??>
+                            <input type="hidden" name="${(_csrf.parameterName)!'csrf-param-name'}" value="${(_csrf.token)!'csrf-token'}">
+                        </#if>
+                        <button>Order</button>
                     </form>
 
                 </div>
@@ -43,7 +68,7 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="js/mainPage.js"></script>
+    <script src="js/cart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
